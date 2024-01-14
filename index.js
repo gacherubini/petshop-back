@@ -29,12 +29,3 @@ app.use('/produtos', require('./routes/ProductRoutes'))
 //rotas api auth
 app.use('/userauth', require('./routes/authRoutes'))
 
-
-// rota inicial / endpoint 
-
-app.get('/', (req,res)=>{
-    
-    //mostrar req
-    res.json({message: 'oi express'})
-
-})
