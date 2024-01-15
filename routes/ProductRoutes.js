@@ -13,8 +13,8 @@ router.use(
 
 router.post('/', RegistroDeProduto);
 router.get('/', ListarTodosProdutos);
-router.get('/id', ListarProdutosPorID);
-router.patch('/id', AtualizarProdutosPorID);
-router.delete('/id', DeletarProdutosPorID);
+router.get('/:id', ListarProdutosPorID);
+router.patch('/:id', AtualizarProdutosPorID);
+router.delete('/:id', DeletarProdutosPorID);
 
 module.exports = router;

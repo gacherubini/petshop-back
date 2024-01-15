@@ -1,7 +1,8 @@
 const Produto = require('../models/Product')
 
+
 const RegistroDeProduto = async(req,res) => {
-    const {name,description,price} = req.body
+    const {name,description,price, image} = req.body
 
     if (!name) {
         res.status(422).json({error: 'o nome é obrigatorio'})
@@ -12,6 +13,7 @@ const RegistroDeProduto = async(req,res) => {
         name,
         description,
         price,
+        image
     }
 
     try {
@@ -32,16 +34,15 @@ const ListarTodosProdutos = async(req,res) => {
 }
 
 const ListarProdutosPorID = async(req,res)=>{
-    const id = req.params
+    const id = req.params.id
     
+    const produto = await Produto.findOne({_id: id})
+
+    if (!produto) {
+        res.status(422).json({message: 'A musica não foi encontrada'})
+        return
+    }
     try {
-        const produto = await Produto.findOne({_id: id})
-
-        if (!produto) {
-            res.status(422).json({message: 'A musica não foi encontrada'})
-            return
-        }
-
         res.status(200).json(produto)
     } catch (error) {
         res.status(500).json({error: error})
@@ -51,15 +52,16 @@ const ListarProdutosPorID = async(req,res)=>{
 
 const AtualizarProdutosPorID = async(req,res)=>{
     
-    const id = req.params
+    const id = req.params.id
 
       //req.body
-      const {name,description,price} = req.body
+    const {name,description,price, image} = req.body
 
-    const produto = {
+     const produto = {
      name,
      description,
      price,
+     image
     }
       
     try{
@@ -78,7 +80,7 @@ const AtualizarProdutosPorID = async(req,res)=>{
 }
 
 const DeletarProdutosPorID = async(req,res) => {
-    const id = req.params
+    const id = req.params.id
 
     const produto = await Produto.findOne({_id: id})
 
