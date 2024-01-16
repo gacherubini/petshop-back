@@ -50,6 +50,7 @@ const loginUser = async (req, res)=> {
         const {email, password} = req.body;
         // check if email exist
         const user = await User.findOne({email});
+        
         if(!user){
             return res.json({
                 error: 'No user found'

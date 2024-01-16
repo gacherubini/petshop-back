@@ -1,6 +1,5 @@
 const Produto = require('../models/Product')
 
-
 const RegistroDeProduto = async(req,res) => {
     const {name,description,price, image} = req.body
 

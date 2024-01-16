@@ -26,7 +26,6 @@ app.use(
     }),
 )
 
-  
 //rotas api produtos
 app.use('/produtos', require('./routes/ProductRoutes'))
 
