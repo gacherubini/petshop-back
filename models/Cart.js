@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
-const Carrinho = mongoose.model('cart', {
-
+const Cart = mongoose.model('cart', {
+    cart_id : String, 
+    user_id : String, 
 });
 
-module.exports = Carrinho
+module.exports = Cart
